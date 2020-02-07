@@ -14,7 +14,7 @@ public class FooController {
     @Autowired
     private FooRepository fooRepository;
 
-    @GetMapping("/foo/{id]")
+    @GetMapping("/foo/{id}")
     public Foo getFoo(@PathVariable Long id) {
         return fooRepository.findById(id).orElseThrow(IllegalArgumentException::new);
     }

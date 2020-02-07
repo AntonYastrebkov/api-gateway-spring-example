@@ -1,0 +1,5 @@
+rootProject.name = 'api-gateway-spring-example'
+include 'gateway'
+include 'foo-microservice'
+include 'eureka-server'
+
