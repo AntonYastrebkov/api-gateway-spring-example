@@ -7,7 +7,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
 
+@Component
 public class CustomFilter implements GatewayFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -17,7 +19,8 @@ public class CustomFilter implements GatewayFilter {
             v.forEach(e -> System.out.print(e + " "));
             System.out.println();
         });
-        if (exchange.getRequest().getQueryParams().get("flag").contains("stop")) {
+        List<String> token = exchange.getRequest().getQueryParams().get("flag");
+        if (token.contains("stop")) {
             System.out.println("Request rejected");
             return Mono.error(new Exception("Go away"));
         }

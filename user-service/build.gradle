@@ -34,17 +34,18 @@ dependencyManagement {
 }
 
 dependencies {
-//    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'
-//    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.security:spring-security-oauth2-client'
-    implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
-    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.postgresql:postgresql:42.2.9'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    implementation 'com.fasterxml.jackson.module:jackson-module-jaxb-annotations'
+    implementation 'com.vladmihalcea:hibernate-types-52:2.8.0'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:1.4.7.RELEASE'
     implementation 'jakarta.xml.bind:jakarta.xml.bind-api:2.3.2'
     implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.2'
     compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
