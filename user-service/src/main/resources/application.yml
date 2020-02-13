@@ -11,9 +11,12 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 
 jwt:
   accessExpiration: 3600000
   refreshExpiration: 86400000
   jwtSecret: secretKey
+
+server:
+  port: 9000

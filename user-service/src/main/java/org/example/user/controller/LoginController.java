@@ -1,5 +1,6 @@
 package org.example.user.controller;
 
+import com.netflix.discovery.util.StringUtil;
 import org.example.user.model.Token;
 import org.example.user.model.User;
 import org.example.user.model.UserDto;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +24,7 @@ import java.util.Set;
 
 @RestController
 public class LoginController {
+    private final String BEARER_TOKEN = "Bearer ";
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -49,7 +52,11 @@ public class LoginController {
 
     @RequestMapping(method = RequestMethod.POST, path = "/verify")
     @ResponseStatus(HttpStatus.OK)
-    public void verify(@RequestParam String token) {
-        tokenVerifier.verify(token);
+    public Boolean verify(@RequestParam String token) {
+        if (StringUtils.hasText(token) && token.startsWith(BEARER_TOKEN)) {
+            tokenVerifier.verify(token.substring(BEARER_TOKEN.length()));
+            return true;
+        }
+        return false;
     }
 }
