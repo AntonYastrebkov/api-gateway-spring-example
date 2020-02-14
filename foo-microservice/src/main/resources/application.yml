@@ -1,6 +1,11 @@
 server:
   port: 8081
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/auth_db
@@ -11,7 +16,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
 
   application:
     name: foo-service

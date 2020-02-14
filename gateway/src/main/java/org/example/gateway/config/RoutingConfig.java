@@ -38,11 +38,8 @@ public class RoutingConfig {
     public RouteLocator customRouteLocator(RouteLocatorBuilder build) {
         System.out.println("Starting");
         return build.routes()
-//                .route("foo-service",
-//                        r -> r.path("/foo**")
-//                                .uri("lb://foo-service")
-//                )
-                .route(r -> r.path("/foo/**")
+                .route(r -> r.path("/api/**")
+                        .filters(f -> f.rewritePath("/api/(?<segment>.*)", "/${segment}"))
                         .uri("lb://foo-service")
                         // .filter(filter)
                         .filter(securityFilter))

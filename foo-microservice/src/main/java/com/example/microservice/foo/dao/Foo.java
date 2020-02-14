@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.UUID;
 
 @Entity
 @Data
@@ -18,8 +19,10 @@ public class Foo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String info;
+    private UUID userId;
 
-    public Foo(String info) {
+    public Foo(String info, UUID userId) {
         this.info = info;
+        this.userId = userId;
     }
 }

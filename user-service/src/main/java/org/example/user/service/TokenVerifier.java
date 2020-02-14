@@ -14,7 +14,7 @@ public class TokenVerifier {
     public void verify(String token) {
         try {
             Claims claims = Jwts.parser().setSigningKey("secretKey").parseClaimsJws(token).getBody();
-            System.out.println(claims.toString());
+            // System.out.println(claims.toString());
 //            TokenSubject subject = (TokenSubject) claims;
 //            System.out.println(subject.getUserId());
         } catch (SignatureException ex) {
